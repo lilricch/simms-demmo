@@ -3,321 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simms International School</title>
-
-<style>
-/* General Improvements & Best Practices */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:#f5f7fb;
-    line-height: 1.6;
-}
-
-header {
-    background:white;
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 5px rgba(0,0,0,0.05);
-    position: sticky; /* Make header sticky */
-    top: 0;
-    z-index: 10;
-}
-
-header h2 a {
-    text-decoration: none;
-    color: inherit;
-}
-
-nav a {
-    margin-left:20px;
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #0066ff;
-}
-
-.menu-toggle {
-    display: none;
-}
-
-.hero {
-    height:90vh;
-    background:url('https://images.unsplash.com/photo-1588072432836-e10032774350') center/cover no-repeat; /* Added no-repeat */
-    background-attachment: fixed; /* Parallax effect */
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    position:relative;
-}
-
-.hero::after {
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.5);
-    top:0;
-    left:0;
-}
-
-.hero-content {
-    position:relative;
-    z-index:2;
-    animation: fadeIn 1s ease-out; /* Added animation */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero h1 {
-    font-size:48px;
-    margin-bottom: 10px;
-}
-
-.btn {
-    background:#0066ff;
-    color:white;
-    padding:12px 25px;
-    text-decoration:none;
-    border-radius:5px;
-    margin-top:15px;
-    display:inline-block;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-    background: #0052cc;
-    transform: translateY(-2px);
-}
-
-.section {
-    padding:60px 20px;
-    text-align:center;
-}
-
-.cards {
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top: 20px;
-}
-
-.card {
-    background:white;
-    padding:20px;
-    width:280px; /* Slightly increased width */
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.gallery {
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
-    margin-top: 20px;
-}
-
-.gallery img {
-    width:300px; /* Increased width */
-    height: 200px; /* Set fixed height */
-    object-fit: cover; /* Ensure images cover the area without distortion */
-    border-radius:8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-footer {
-    background:#111;
-    color:white;
-    padding:30px;
-    text-align:center;
-}
-
-/* WhatsApp Button */
-.whatsapp {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:15px;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-    z-index: 100;
-}
-
-.whatsapp:hover {
-    transform: scale(1.1);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-wrap: wrap;
-        padding: 15px 20px;
-        position: static; /* Remove sticky header on mobile */
-    }
-
-    .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        cursor: pointer;
-        z-index: 20;
-    }
-
-    .menu-toggle span {
-        height: 3px;
-        width: 100%;
-        background: #333;
-        border-radius: 3px;
-        transition: all 0.3s ease;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-        margin-top: 15px;
-        flex-direction: column;
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav a {
-        display: block;
-        margin: 10px 0;
-        text-align: center;
-        padding: 8px;
-        background: #f0f0f0;
-        border-radius: 5px;
-    }
-
-    .hero {
-        height: 70vh;
-        background-attachment: scroll; /* Disable parallax on mobile for performance */
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .section {
-        padding: 40px 20px;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-        max-width: 350px;
-    }
-
-    .gallery img {
-        width: 90%;
-        max-width: 350px;
-        height: auto; /* Reset height */
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        align-items: flex-start;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        padding: 0 15px;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
-</style>
+<title>SIMS International School</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <header>
-<h2><a href="#">Simms international school</a></h2>
+    <h2><a href="index.html">SIMS International School</a></h2>
 <div class="menu-toggle">
     <span></span>
     <span></span>
     <span></span>
 </div>
 <nav>
-<a href="#">Home</a>
-<a href="#">Programs</a>
-<a href="#">Admissions</a>
-<a href="#">Contact</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="contact.html">Contact</a>
 </nav>
 </header>
 
 <section class="hero">
 <div class="hero-content">
-<h1>Simms International School</h1>
-<p>A private institution offering quality education focused on nurturing, discipline, and global citizenship</p>
-<a class="btn" href="#">Apply Now</a>
+    <h1>Quality Education for a Brighter Future</h1>
+    <p>Nurturing discipline, excellence, and global citizenship in a safe environment.</p>
+    <a class="btn" href="admissions.html">Enroll Now</a>
+    <a class="btn btn-outline" href="about.html">Learn More</a>
 </div>
 </section>
 
 <section class="section">
-<h2>Our Programs</h2>
+    <div class="text-center">
+        <h2>Welcome to SIMS</h2>
+        <p style="max-width: 700px; margin: 0 auto;">
+            At SIMS International School, we are dedicated to providing a holistic education that empowers students to excel academically and socially. Our curriculum is designed to foster critical thinking and creativity.
+        </p>
+    </div>
+</section>
+
+<section class="section" style="background: #eef2f7;">
+    <div class="text-center">
+        <h2>Our Programs</h2>
+    </div>
 <div class="cards">
 <div class="card"><h3>Nursery</h3><p>Early childhood development.</p></div>
 <div class="card"><h3>Primary</h3><p>Strong academic foundation.</p></div>
@@ -325,41 +53,72 @@ footer {
 </div>
 </section>
 
-<section class="section">
+<section class="section text-center">
 <h2>Why Choose Us</h2>
 <p>Qualified Teachers • Safe Environment • Modern Facilities • Excellent Results</p>
+    <div class="cards">
+        <div class="card">
+            <h3>Qualified Teachers</h3>
+            <p>Our experienced staff are dedicated to student success.</p>
+        </div>
+        <div class="card">
+            <h3>Modern Facilities</h3>
+            <p>State-of-the-art labs and libraries for better learning.</p>
+        </div>
+        <div class="card">
+            <h3>Holistic Growth</h3>
+            <p>Focus on sports, arts, and character building.</p>
+        </div>
+    </div>
 </section>
 
-<section class="section">
-<h2>Gallery</h2>
-<div class="gallery">
-<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classroom with students">
-<img src="https://plus.unsplash.com/premium_photo-1663089920014-4ff29cd209f3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2Nob29sJTIwc3R1ZGVudHN8ZW58MHx8MHx8fDA%3D" alt="Students working on a project">
-<img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students in library">
-</div>
+<section class="section text-center">
+    <h2>Gallery</h2>
+    <div class="cards" style="margin-top: 20px;">
+        <!-- Using the extracted image from the maps link provided -->
+        <img src="https://lh3.googleusercontent.com/p/AF1QipNAKjWt7fQggATCDpwGqtC52_M8QF2L_4xwlRdH=w600" alt="SIMS School Building" class="gallery-img">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerj0qY22QpKPZXnm0uxCAFiOsn_8l469MTcm2uwNlUz1o4LAk2-jQo9tv5JKD4iH6rHIzH-GOsO9O7cEXM8k-AqPjGpe12-RMxAJ6rLzqPThSTaR-obe0Nb7KQ8RWF4csRdgiN9=w600" alt="School Activities" class="gallery-img">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipO2fRcWGOjYzz1KXzV96kDljVB9MMFRFS2cX6vE=w600" alt="School Premises" class="gallery-img">
+    </div>
 </section>
 
-<section class="section">
+<section class="section text-center" style="background: #0066ff; color: white;">
 <h2>Admissions Open</h2>
 <p>Enroll now for the 2026 academic year</p>
-<a class="btn" href="#">Apply Now</a>
+    <a class="btn" style="background: white; color: #0066ff;" href="admissions.html">Apply Now</a>
 </section>
 
 <footer>
-<p>© 2026 Simms International School | Accra, Ghana</p>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>SIMS International School</h3>
+            <p>Empowering the next generation of leaders through excellence in education.</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <p>📍 123 School Avenue, Accra, Ghana</p>
+            <p>📞 +233 20 123 4567</p>
+            <p>✉️ info@simsschool.edu.gh</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2026 SIMS International School. All Rights Reserved.</p>
+        <p style="font-size: 0.8em; opacity: 0.7;">* Images and content are placeholders for demo purposes.</p>
+    </div>
 </footer>
 
 <!-- WhatsApp Button -->
-<a class="whatsapp" href="https://wa.me/233XXXXXXXXX" target="_blank">💬</a>
+<a class="whatsapp" href="https://wa.me/233XXXXXXXXX" target="_blank" title="Chat with us">💬</a>
 
-<script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        toggle.classList.toggle('active');
-    });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
